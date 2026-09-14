@@ -1,0 +1,1 @@
+- [Pino HTTP imports](pino-http-imports.md) — use the named `pinoHttp` export for Vercel-compatible TypeScript module resolution.
