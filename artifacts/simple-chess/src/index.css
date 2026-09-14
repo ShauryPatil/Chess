@@ -69,8 +69,8 @@ button:focus-visible { outline: 3px solid hsl(var(--accent) / .48); outline-offs
 .player-name { font-size: .77rem; font-weight: 800; letter-spacing: .02em; }
 .turn-label { color: hsl(var(--muted-foreground)); font-family: var(--font-mono); font-size: .64rem; text-transform: uppercase; letter-spacing: .08em; }
 .board-frame { padding: 14px; background: hsl(193 29% 20%); border-radius: 14px; box-shadow: 0 18px 38px hsl(193 31% 16% / .17), inset 0 0 0 1px hsl(193 27% 32%); }
-.board { display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; overflow: hidden; border-radius: 4px; }
-.square { position: relative; display: grid; place-items: center; border: 0; padding: 0; cursor: pointer; transition: filter .16s ease, transform .16s ease; }
+.board { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-template-rows: repeat(8, minmax(0, 1fr)); aspect-ratio: 1; overflow: hidden; border-radius: 4px; }
+.square { position: relative; display: grid; min-width: 0; min-height: 0; place-items: center; border: 0; padding: 0; cursor: pointer; transition: filter .16s ease, transform .16s ease; }
 .square:hover { filter: brightness(1.06); }
 .square.light-square { background: hsl(39 46% 76%); }
 .square.dark-square { background: hsl(188 44% 32%); }
