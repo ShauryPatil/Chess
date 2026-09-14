@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Simple Chess"
+description = "A polished browser chess game for two players on one device, with legal move handling, captures, turn status, check detection, and reset controls."
+version = "1.0.0"
+id = "artifacts/simple-chess"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20060
+
+[services.development]
+run = "pnpm --filter @workspace/simple-chess run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/simple-chess", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/simple-chess/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20060"
+BASE_PATH = "/"
