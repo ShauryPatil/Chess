@@ -1,1 +1,2 @@
 - [Pino HTTP imports](pino-http-imports.md) — use the named `pinoHttp` export for Vercel-compatible TypeScript module resolution.
+- [Vercel workspace emits](vercel-workspace-emits.md) — keep simple Vercel route entrypoints free of workspace runtime imports when per-file emit is used.
