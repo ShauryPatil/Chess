@@ -1,0 +1,58 @@
+Fix my chess website's Vercel deployment. The deployed API is returning HTTP 404 for the root route.
+
+Vercel project:
+
+- Project: chess-api-server
+- Production domain: chess-api-server.vercel.app
+- Deployment: dpl_9h1AGE8VpxAMtS44JyZGjLKTFfU4
+- Framework/backend: Node.js/Express (inspect the repository to confirm the exact setup)
+
+Vercel logs show:
+
+GET / → 404
+GET / → 404
+GET / → 404
+GET /favicon.ico → 404
+
+The function itself is receiving requests and completing them, so this appears to be a routing/entry-point/deployment configuration issue rather than a server crash.
+
+Please inspect the ENTIRE project before making changes. Identify:
+
+1. The actual Express/server entry file.
+2. The API routes currently defined.
+3. package.json scripts and dependencies.
+4. vercel.json, if present.
+5. Any Vercel-specific configuration.
+6. Whether the project is using CommonJS or ESM.
+7. Whether the Express app is exported correctly for Vercel.
+8. Whether routes are mounted under a prefix such as /api.
+9. Whether the frontend is accidentally being deployed/configured as the backend.
+
+Then fix the deployment properly.
+
+Requirements:
+
+- Do NOT rewrite or remove existing chess API functionality.
+- Preserve all existing endpoints and their behavior.
+- Make the Vercel serverless entry point compatible with the current project structure.
+- Ensure requests to the intended API routes reach Express correctly.
+- Add a simple GET / health/root route that returns a small JSON response such as:
+  {"status":"ok","service":"chess-api-server"}
+  unless the existing architecture intentionally uses another root response.
+- Fix any incorrect Vercel routing configuration.
+- If vercel.json is required, create/update it correctly for this project.
+- Make sure the final structure works with Vercel's current Node.js serverless deployment behavior.
+- Do not hardcode secrets or API keys.
+- Preserve all environment-variable usage.
+- Do not introduce unnecessary dependencies.
+
+After making the changes:
+
+1. Run the project's build/test/start checks available in Replit.
+2. Test the root endpoint locally.
+3. Test the existing chess API endpoints locally.
+4. Verify there are no import/export, module, or routing errors.
+5. Check that the Vercel configuration points to the correct server entry point.
+6. Explain exactly which files you changed and why.
+
+Important: Do not just hide the 404. Find the actual cause and fix the deployment architecture so the existing chess API continues working after redeployment.
