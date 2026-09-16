@@ -3,15 +3,10 @@ import { logger } from "./lib/logger";
 
 export default app;
 
-if (!process.env["VERCEL"]) {
-  const rawPort = process.env["PORT"];
+const rawPort = process.env["PORT"];
+const isServerless = Boolean(process.env["VERCEL"]) || !rawPort;
 
-  if (!rawPort) {
-    throw new Error(
-      "PORT environment variable is required but was not provided.",
-    );
-  }
-
+if (!isServerless && rawPort) {
   const port = Number(rawPort);
 
   if (Number.isNaN(port) || port <= 0) {
